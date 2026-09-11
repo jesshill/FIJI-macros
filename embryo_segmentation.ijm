@@ -1,6 +1,5 @@
 /// open single image and get the name of the image ///
 title = getTitle();
-print(title);
 
 
 /// duplicate the whole hyperstack ///
@@ -9,7 +8,6 @@ run("Duplicate...", "duplicate");
 
 /// create a new image name for the duplicate ///
 title_new = replace(title, ".nd2", "-1.nd2");
-print(title_new);
 
 
 /// to the duplicate image only, split channels and keep only the BF for making the mask ///
@@ -22,7 +20,9 @@ selectWindow("C1-" + title_new);
 
 /// subtract background and z project ///
 run("Subtract Background...", "rolling=50 create stack");
-run("Z Project...", "projection=[Max Intensity]");
+/// the choice here is between projection with max intensity or summing the slices ///
+//run("Z Project...", "projection=[Max Intensity]");
+run("Z Project...", "projection=[Sum Slices]");
 
 
 /// threshold image, make mask, and add as ROI ///
@@ -52,7 +52,9 @@ roiManager("Measure");
 
 /// now grab the background measurement /// 
 //setTool("rectangle");
-makeRectangle(20, 20, 30, 30);
+makeRectangle(3, 4, 10, 10);
+waitForUser("Move the ROI",
+    "Move the rectangle to the desired location, then click OK.");
 run("Measure");
 
 
