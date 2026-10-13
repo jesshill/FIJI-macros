@@ -75,13 +75,13 @@ for (i=0; i<img_array.length; i++) {
     	run("Split Channels");
 	
    	c1title = "C1-MAX_" + filename;
-    	c2title = "C2-MAX_" + filename;
+    c2title = "C2-MAX_" + filename;
 
 	// ---------------------------------------------------
 	// set display ranges
 	// ---------------------------------------------------
 	selectWindow(c1title);
-	setMinAndMax(100, 2000);
+	setMinAndMax(500, 4000);
 
 	selectWindow(c2title);
 	setMinAndMax(0, 2000);
