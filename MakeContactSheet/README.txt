@@ -1,4 +1,4 @@
-# makeContactSheet
+makeContactSheet
 
 ## INSTALL
 
